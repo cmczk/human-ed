@@ -1,7 +1,30 @@
 ﻿@page "/philosophy"
 
-<h3>PhilosophyQuestionnaire</h3>
+<h1>Philosophy Questionnaire</h1>
+
+<EditForm class="w-50" Model="@Input" OnValidSubmit="@Submit" FormName="PhilosophyForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="Input.Comment" class="form-label">Открытый комментарий</label>
+        <InputTextArea @bind-Value="@Input.Comment" id="Input.Comment" class="form-control" placeholder="Любая информация, которой вы хотели бы поделиться, но не нашли подходящих вопросов в форме"></InputTextArea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</EditForm>
 
 @code {
+    [SupplyParameterFromForm]
+    private PhilosophyInput Input { get; set; } = new();
 
+    private sealed class PhilosophyInput
+    {
+        public string? Comment { get; set; } = "";
+    }
+
+    private void Submit()
+    {
+        Console.WriteLine(Input.Comment);
+    }
 }
