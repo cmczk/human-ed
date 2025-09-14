@@ -4,7 +4,7 @@ import (
 	"log/slog"
 
 	"github.com/cmczk/human-ed/internal/config"
-	"github.com/cmczk/human-ed/internal/logger"
+	"github.com/cmczk/human-ed/lib/logger"
 )
 
 func main() {
